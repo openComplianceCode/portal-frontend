@@ -1,46 +1,82 @@
-# See http://help.github.com/ignore-files/ for more about ignoring files.
-
-# compiled output
-/dist
-/tmp
-/out-tsc
-# Only exists if Bazel was run
-/bazel-out
-
-# dependencies
 /node_modules
+# Python compiled files
+*.py[cod]
 
-# profiling files
-chrome-profiler-events*.json
-speed-measure-plugin*.json
+# do not commit thriparty cache of wheels
+/thirdparty
 
-# IDEs and editors
-/.idea
+# virtualenv and other misc bits
+/src/*.egg-info
+/dist
+/build
+/bin
+/lib
+/scripts
+/Scripts
+/Lib
+/pip-selfcheck.json
+/tmp
+.Python
+/include
+/Include
+/local
+*/local/*
+/local/
+/share/
+/tcl/
+/.eggs/
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+.cache
+.coverage
+.coverage.*
+nosetests.xml
+htmlcov
+
+# Translations
+*.mo
+
+# IDEs
 .project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
+.pydevproject
+.idea
+org.eclipse.core.resources.prefs
+.vscode
+.vs
 
-# IDE - VSCode
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-.history/*
+# Sphinx
+docs/_build
+docs/bin
+docs/build
+docs/include
+docs/Lib
+doc/pyvenv.cfg
+pyvenv.cfg
 
-# misc
-/.sass-cache
-/connect.lock
-/coverage
-/libpeerconnection.log
-npm-debug.log
-yarn-error.log
-testem.log
-/typings
-
-# System Files
+# Various junk and temp files
 .DS_Store
+*~
+.*.sw[po]
+.build
+.ve
+*.bak
+/.cache/
 Thumbs.db
+
+
+
+# pyenv
+/.python-version
+/man/
+/.pytest_cache/
+lib64
+tcl
+/.env
+
+*.orig
+/release*
+/00-*.txt
+/z-todo-licenses-*
