@@ -1,0 +1,129 @@
+.license-show {
+  .header {
+    padding-bottom: 2px;
+    @media screen and (max-width: 600px) {
+      padding-left: 5px;
+    }
+    background-color: #3f51b5;
+    color: #ffffff;
+
+    .main-tags {
+      display: flex;
+      flex-wrap: wrap;
+      align-content: space-between;
+    }
+
+    .title {
+      padding-top: 42px;
+      font-size: 3em;
+      line-height: 1.3em;
+    }
+
+    .sub-title {
+      margin-top: 0px;
+    }
+
+    border-bottom: 1px solid #ffffff;
+  }
+
+  .summary,
+  .full-text {
+    &.small {
+      width: 60%;
+    }
+
+    &.wider {
+      width: 80%;
+    }
+
+    margin: 30px auto;
+    @media screen and (max-width: 600px) {
+      &.small {
+        width: 90%;
+      }
+
+      &.wider {
+        width: 90%;
+      }
+    }
+
+    .title {
+      padding: 0.3em 0em 0.7em 0em;
+      font-size: 2em;
+      font-weight: bold;
+    }
+
+    .body {
+      font-size: 1.1em;
+      line-height: 1.4em;
+      padding-bottom: 1em;
+    }
+  }
+
+  .license-main-tag {
+    margin: 0px 20px 10px 0px;
+    font-size: 12px;
+    height: 30px;
+    line-height: 30px;
+  }
+
+  .tooltip-warning {
+    background: #ff4081;
+  }
+
+  .spdx-name {
+    margin-bottom: 8px;
+    font-size: 16px;
+  }
+
+  .breadcrumb {
+    margin-top: 25px;
+  }
+
+  #content-header h1 {
+    color: #58595b;
+  }
+
+  .page h2,
+  .page h3,
+  .page h4,
+  .page h5 {
+    color: #4597cb;
+  }
+
+  .page h1 {
+    font-size: 2em;
+  }
+
+  .page h2 {
+    font-size: 1.5em;
+  }
+
+  .page a,
+  .page a:visited,
+  .page a:hover {
+    color: #4597cb;
+  }
+
+  .replacable-license-text {
+    color: #cc0000;
+  }
+
+  .replacable-license-text p var {
+    color: #cc0000;
+  }
+
+  .optional-license-text {
+    color: #0000cc;
+  }
+
+  .optional-license-text p var {
+    color: #0000cc;
+  }
+
+  .page ul,
+  .page ol,
+  .page li {
+    margin: 10px 0 10px 0;
+  }
+}

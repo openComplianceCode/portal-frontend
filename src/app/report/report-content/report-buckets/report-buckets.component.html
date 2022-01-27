@@ -1,0 +1,19 @@
+<ngx-charts-bar-horizontal
+  [scheme]="colorScheme"
+  [results]="single"
+  [gradient]="gradient"
+  [xAxis]="true"
+  [yAxis]="true"
+  [legend]="false"
+  [trimYAxisTicks]="false"
+  (select)="onSelect($event)"
+  [trimXAxisTicks]="false"
+  [view]="[920, 340]"
+  [showDataLabel]="true"
+>
+</ngx-charts-bar-horizontal>
+<app-report-file-list
+  [repoBranchHash]="repoBranchHash"
+  [listType]="fileListType"
+  [currentType]="currentType"
+></app-report-file-list>

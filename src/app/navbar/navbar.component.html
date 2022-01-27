@@ -1,0 +1,99 @@
+<mat-toolbar color="primary" class="nav-toolbar">
+  <button mat-button routerLink="/" fxHide.lt-md class="logo">
+    <img src="/assets/icons/diaochan.jpeg" width="28px" /></button
+  >貂蝉
+  <div
+    class="search-input-group-auto"
+    matAutocompleteOrigin
+    #origin="matAutocompleteOrigin"
+  >
+    <div class="search-input-group">
+      <input
+        class="search-input"
+        placeholder="Lookup Licenses"
+        matInput
+        [matAutocomplete]="auto"
+        [ngModel]="name"
+        (ngModelChange)="filterName($event)"
+        [matAutocompleteConnectedTo]="origin"
+      /><mat-icon *ngIf="!loading">search</mat-icon>
+      <mat-spinner *ngIf="loading" diameter="26" color="accent"></mat-spinner>
+    </div>
+  </div>
+
+  <div class="flex-spacer"></div>
+  <div fxHide fxShow.gt-sm="">
+    <button
+      mat-button
+      (click)="goToLink('/api_test')"
+      routerLinkActive="mat-accent"
+    >
+      API
+    </button>
+    <button mat-button routerLink="/lvmeng" routerLinkActive="mat-accent">
+      吕蒙
+    </button>
+    <button mat-button routerLink="/authors" routerLinkActive="mat-accent">
+      作者
+    </button>
+    <button
+      mat-button
+      routerLink="/login"
+      routerLinkActive="mat-accent"
+      *ngIf="!login"
+    >
+      登录
+    </button>
+    <button
+      mat-button
+      routerLinkActive="mat-accent"
+      *ngIf="login"
+      [mat-menu-trigger-for]="menu2"
+    >
+      <img [src]="avatarUrl" class="avatar-user" />
+    </button>
+  </div>
+  <button mat-button [mat-menu-trigger-for]="menu" fxHide.gt-sm>
+    <mat-icon>menu</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-menu #menu2="matMenu">
+  <button mat-menu-item routerLink="/user">我的</button>
+
+  <button mat-menu-item (click)="logout()">退出</button>
+</mat-menu>
+
+<mat-menu #menu="matMenu" fxHide>
+  <button mat-menu-item routerLink="/browser">浏览</button>
+  <button mat-menu-item routerLink="/browser">API</button>
+  <button mat-menu-item routerLink="/author">作者</button>
+  <button
+    mat-button
+    routerLink="/login"
+    routerLinkActive="mat-accent"
+    *ngIf="!login"
+  >
+    登录
+  </button>
+
+  <button
+    mat-button
+    routerLink="/login"
+    routerLinkActive="mat-accent"
+    *ngIf="login"
+  >
+    <img [src]="avatarUrl" class="avatar-user" />
+  </button>
+</mat-menu>
+
+<mat-autocomplete #auto="matAutocomplete" panelWidth="460px">
+  <mat-option
+    *ngFor="let license of licenses$ | async"
+    [value]="license.name"
+    [routerLink]="['/license', license.id]"
+  >
+    {{ license.name }}
+    <span *ngIf="license.spdxName">({{ license.spdxName }}) </span>
+  </mat-option>
+</mat-autocomplete>

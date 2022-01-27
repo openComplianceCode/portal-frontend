@@ -1,0 +1,73 @@
+<div class="license-show">
+  <div class="header">
+    <div class="container">
+      <div class="title">
+        {{ license.name }}
+      </div>
+      <div class="sub-title">
+        <div class="spdx-name">
+          SPDX-License-Identifier: {{ license.spdxName }}
+        </div>
+        <div class="main-tags">
+          <button
+            mat-raised-button
+            [matTooltip]="lmt.mainTag.description"
+            matTooltipClass="tooltip-warning"
+            aria-label="Button that shows a red tooltip"
+            *ngFor="let lmt of license.licenseMainTags"
+            class="license-main-tag"
+            color="basic"
+          >
+            #{{ lmt.mainTag.name }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <mat-tab-group mat-stretch-tabs>
+      <mat-tab label="Summary">
+        <div class="summary small">
+          <mat-card>
+            <div class="title">Quick Summary</div>
+            <div class="body" [innerHTML]="license.summary"></div>
+          </mat-card>
+        </div>
+
+        <div
+          fxLayout="row"
+          fxLayoutAlign="space-between stretch"
+          fxLayoutAlign.lt-md="space-around"
+          fxLayout.lt-md="row wrap"
+        >
+          <app-feature-tags-box
+            fxFlex="30"
+            fxFlex.lt-md="90"
+            tagType="can"
+            [featureTags]="license.canFeatureTags"
+          ></app-feature-tags-box>
+          <app-feature-tags-box
+            fxFlex="30"
+            fxFlex.lt-md="90"
+            tagType="must"
+            [featureTags]="license.mustFeatureTags"
+          ></app-feature-tags-box>
+          <app-feature-tags-box
+            fxFlex="30"
+            fxFlex.lt-md="90"
+            tagType="cannot"
+            [featureTags]="license.cannotFeatureTags"
+          ></app-feature-tags-box>
+        </div>
+      </mat-tab>
+      <mat-tab label="Full Text">
+        <div class="full-text wider">
+          <mat-card>
+            <div class="title">Full Text</div>
+            <div class="page" [innerHTML]="license.fullText"></div>
+          </mat-card>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
