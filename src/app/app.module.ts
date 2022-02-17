@@ -45,6 +45,9 @@ import { UserComponent } from './user/user.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { LvMengComponent, LvMengService } from './lv-meng/lv-meng.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { LicenseAllComponent } from './license-all/license-all.component';
+import { LicenseListNoFeatureComponent } from './license-all/license-list-no-feature/license-list-no-feature.component';
+import { CompatiableTableComponent } from './compatiable-table/compatiable-table.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +70,9 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     ReportBucketsComponent,
     UserComponent,
     LvMengComponent,
+    LicenseAllComponent,
+    LicenseListNoFeatureComponent,
+    CompatiableTableComponent,
   ],
   imports: [
     ReactiveFormsModule,

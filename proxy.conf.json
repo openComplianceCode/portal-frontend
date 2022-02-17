@@ -29,5 +29,10 @@
     "changeOrigin": true,
     "secure": false,
     "ws": false
+  },
+  "/search_conflict": {
+    "target": "http://127.0.0.1:8083",
+    "secure": false,
+    "ws": false
   }
 }
