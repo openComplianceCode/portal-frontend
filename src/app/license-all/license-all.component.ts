@@ -45,6 +45,7 @@ export class LicenseAllComponent implements OnInit {
   totalPages: number; //总共有多少页
   listAllResult = {} as any;
   jumpPageString: string;
+  breads: any = [{ url: '/', label: 'Home' }, { label: 'List All License' }];
 
   constructor(private apollo: Apollo) {}
 

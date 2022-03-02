@@ -188,6 +188,8 @@ td {
   border: 1px solid #a3afb8;
   padding: 5px;
   outline: none;
+  position: sticky;
+  top: 0px;
 }
 .filter:focus {
   border-color: #6b6b91;
@@ -215,4 +217,10 @@ td {
 .option-selected {
   background-color: #41a5f6;
   color: white;
+}
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+.mat-radio-group {
+  margin: 15px;
 }

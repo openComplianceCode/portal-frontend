@@ -13,6 +13,7 @@ export class LvMengComponent implements OnInit {
   lvMengService: LvMengService;
   result: Result;
   hasResult: boolean;
+  breads: any = [{ url: '/', label: 'Home' }, { label: '吕蒙' }];
 
   constructor(http: HttpClient, lvMengService: LvMengService) {
     this.loading = false;

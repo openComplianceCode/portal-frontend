@@ -65,10 +65,15 @@ export class CompatiableTableComponent implements OnInit {
   //过滤选项的字符串
   filter1: string;
   filter2: string;
+  breads: any;
 
   constructor(http: HttpClient, public el: ElementRef) {
     this.http = http;
     this.hasResult = false;
+    this.breads = [
+      { url: '/', label: 'Home' },
+      { url: '', label: '兼容性' },
+    ];
   }
 
   ngOnInit(): void {
@@ -184,16 +189,6 @@ export class CompatiableTableComponent implements OnInit {
     }
   }
 
-  reverseDropDownMenuState_test(num: number, $event: Event) {
-    console.log(`reverse dropdownMenu ${num}`);
-    if (num == 1) {
-      console.log($event);
-      this.showDropdownMenu1 = !this.showDropdownMenu1;
-    } else {
-      this.showDropdownMenu2 = !this.showDropdownMenu2;
-    }
-  }
-
   displayNoneDropdownMenu(num: number) {
     //如果不显示dropdown-menu1，那么将其置为display:none
     if (num == 1 && !this.showDropdownMenu1) {
@@ -232,11 +227,5 @@ export class CompatiableTableComponent implements OnInit {
     this.reverseDropDownMenuState(num);
     document.getElementById(`filter${num}`)?.focus();
     console.log(document.activeElement);
-  }
-
-  //测试方法，未发现调用时可以直接删除
-  test(s: string, $event: Event) {
-    console.log($event.target);
-    console.log('test function called: value: ' + s);
   }
 }

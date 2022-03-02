@@ -1,0 +1,12 @@
+<nav>
+  <ol class="bread">
+    <li class="bread-item" *ngFor="let item of breads">
+      <a [routerLink]="item.url" *ngIf="item.url; else elseBlock">{{
+        item.label
+      }}</a>
+      <ng-template #elseBlock>
+        <span>{{ item.label }}</span>
+      </ng-template>
+    </li>
+  </ol>
+</nav>

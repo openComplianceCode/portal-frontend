@@ -1,0 +1,26 @@
+<div class="license-item" fxLayout="row">
+  <div class="start" fxFlex="25">
+    <a [routerLink]="['/license', license.id]">{{ license.name }}</a
+    ><br />
+    <span class="small" *ngIf="license.spdxName"
+      >SPDX-License-Identifier: {{ license.spdxName }}</span
+    >
+  </div>
+  <div class="middle" fxFlex="20">
+    <span *ngFor="let lmt of license.licenseMainTags" class="main-tag"
+      >#{{ lmt.mainTag.name }}
+    </span>
+  </div>
+  <div class="end" fxFlex="45">
+    <span class="can" *ngFor="let tag of license.canFeatureTags">{{
+      showShortFeature(tag.name)
+    }}</span>
+    <span class="must" *ngFor="let tag of license.mustFeatureTags">{{
+      showShortFeature(tag.name)
+    }}</span>
+
+    <span class="cannot" *ngFor="let tag of license.cannotFeatureTags">
+      {{ showShortFeature(tag.name) }}</span
+    >
+  </div>
+</div>
