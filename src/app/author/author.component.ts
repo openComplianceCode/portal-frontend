@@ -9,6 +9,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class AuthorComponent implements OnInit {
   faGithub = faGithub;
+  breads: any = [{ url: '/', label: 'Home' }, { label: '作者' }];
   constructor(private cookieService: CookieService) {}
 
   ngOnInit(): void {}

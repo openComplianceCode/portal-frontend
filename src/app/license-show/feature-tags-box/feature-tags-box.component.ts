@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
-import * as _ from 'lodash';
+import _ from 'lodash';
 
 @Component({
   selector: 'app-feature-tags-box',

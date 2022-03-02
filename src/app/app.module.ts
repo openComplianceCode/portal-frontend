@@ -48,6 +48,9 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { LicenseAllComponent } from './license-all/license-all.component';
 import { LicenseListNoFeatureComponent } from './license-all/license-list-no-feature/license-list-no-feature.component';
 import { CompatiableTableComponent } from './compatiable-table/compatiable-table.component';
+import { LicenseItemFlatComponent } from './license-all/license-list-no-feature/license-item-flat/license-item-flat.component';
+import { BreadComponent } from './navbar/bread/bread.component';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -73,6 +76,8 @@ import { CompatiableTableComponent } from './compatiable-table/compatiable-table
     LicenseAllComponent,
     LicenseListNoFeatureComponent,
     CompatiableTableComponent,
+    LicenseItemFlatComponent,
+    BreadComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -84,6 +89,7 @@ import { CompatiableTableComponent } from './compatiable-table/compatiable-table
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
+    MatRadioModule,
     MatFormFieldModule,
     MatInputModule,
     MatExpansionModule,

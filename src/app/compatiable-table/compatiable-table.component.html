@@ -1,4 +1,4 @@
-<h4 class="compatibility">兼容性</h4>
+<app-bread [breads]="breads"></app-bread>
 <div class="row">
   <div class="col-3"></div>
   <div class="col-3">
@@ -142,24 +142,18 @@
     </div>
   </div>
   <div class="col-3">
-    <button class="button" (click)="getCompatability()">搜索</button>
+    <button (click)="getCompatability()" mat-raised-button color="primary">
+      搜索
+    </button>
   </div>
 </div>
 <div class="row-item-center">
-  <span class="usage">
-    &nbsp; &nbsp; usage：<input
-      type="radio"
-      name="usage"
-      value="source code"
-      [(ngModel)]="usage"
-    />&nbsp;source code&nbsp; &nbsp;
-    <input
-      type="radio"
-      name="usage"
-      value="library"
-      [(ngModel)]="usage"
-    />&nbsp;library
-  </span>
+  <mat-radio-group aria-label="Select an option" [(ngModel)]="usage">
+    <mat-radio-button value="source code" name="usage"
+      >Source Code</mat-radio-button
+    >
+    <mat-radio-button value="library" name="usage">Library</mat-radio-button>
+  </mat-radio-group>
 </div>
 <div class="card" *ngIf="hasResult">
   <div class="card-body">

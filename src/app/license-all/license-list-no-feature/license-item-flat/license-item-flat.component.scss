@@ -1,0 +1,59 @@
+.license-item {
+  border-bottom: 1px solid #eee;
+  padding: 10px 0px;
+}
+.start a {
+  color: #45baf1;
+  font-weight: bold;
+  text-decoration: none;
+}
+.start .small {
+  color: #73c9f1;
+  font-size: 12px;
+}
+.middle {
+  padding: 2px 0px;
+  height: 20px;
+  color: #ccc;
+  font-size: 14px;
+  span {
+    &.free {
+      background-color: #90d490;
+      color: #ffffff;
+      padding: 2px 4px;
+      border-radius: 2px;
+      font-size: 10px;
+      margin-left: 10px;
+    }
+  }
+}
+.end {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  align-content: space-between;
+  gap: 5px 0px;
+  span {
+    flex: 0 0 auto;
+    display: block;
+    height: 20px;
+    border-radius: 3px;
+    color: #ffffff;
+    padding: 4px;
+    font-size: 10px;
+    margin-right: 4px;
+
+    &.can {
+      background-color: #90d490;
+    }
+    &.cannot {
+      background-color: #d49090;
+    }
+    &.must {
+      background-color: #90add4;
+    }
+  }
+}
+.main-tag {
+  margin-right: 5px;
+}

@@ -1,23 +1,9 @@
+<app-bread [breads]="breads"></app-bread>
+
 <div class="container listAllContainer">
-  <div
-    fxLayout="row"
-    fxLayout="row"
-    fxLayoutAlign="space-between stretch"
-    fxLayoutAlign.lt-md="space-around stretch"
-  >
+  <div>
     <app-license-list-no-feature
-      fxFlex="30"
-      [licenses]="listAllResult.licenses?.slice(0, 5)"
-      fxHide.lt-md
-    ></app-license-list-no-feature>
-    <app-license-list-no-feature
-      fxFlex="30"
-      [licenses]="listAllResult.licenses?.slice(5, 10)"
-      fxFlex.lt-md="80"
-    ></app-license-list-no-feature>
-    <app-license-list-no-feature
-      fxFlex="30"
-      [licenses]="listAllResult.licenses?.slice(10, 15)"
+      [licenses]="listAllResult.licenses"
       fxHide.lt-md
     ></app-license-list-no-feature>
   </div>

@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   faGithub = faGithub;
   giteeAuthURL: string;
   githubAuthURL: string;
+  breads: any = [{ url: '/', label: 'Home' }, { label: '登录' }];
 
   constructor(private apollo: Apollo) {}
 
