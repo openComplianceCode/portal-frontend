@@ -1,0 +1,163 @@
+<!-- 选择License的下拉框 -->
+<div
+  class="card toast"
+  [@toast-animation]="showToast ? 'show' : 'hide'"
+  (@toast-animation.start)="displayBlockToast()"
+  (@toast-animation.done)="displayNoneToast()"
+  (click)="$event.stopPropagation()"
+>
+  <div class="search" style="position: relative">
+    <input
+      spellcheck="false"
+      class="filter"
+      placeholder="Lookup Licenses"
+      [(ngModel)]="name"
+      (ngModelChange)="filterName($event)"
+    />
+    <mat-icon class="search-icon">search</mat-icon>
+  </div>
+  <div class="menu">
+    <ul style="list-style: none">
+      <li class="divider"></li>
+      <li
+        *ngFor="let license of data?.listLicensesByName; let i = index"
+        (click)="getLicenseTagInfo(license.id, i); showToast = !showToast"
+        class="option"
+      >
+        {{ license.name }}
+      </li>
+    </ul>
+  </div>
+</div>
+<!-- 对比展示主体部分 -->
+<div class="row-item-center">
+  <div class="col-10">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div
+            *ngFor="let licenseTagInfo of licenseTagInfos; let i = index"
+            class="col-2 tooltip"
+            [ngStyle]="{ 'border-top-left-radius': i==0?'5px':0, 'border-top-right-radius': i==licenseTagInfos.length-1?'5px':0 }"
+            style="border: 1px solid #dedede; padding: 8px; position: relative"
+          >
+            <div
+              *ngIf="licenseTagInfos[i] == undefined"
+              class="row-item-center"
+            >
+              <span
+                class="i-remind-add"
+                (click)="reverseShowToast(i); $event.stopPropagation()"
+              >
+                <span class="add">+</span>
+              </span>
+            </div>
+            <div
+              *ngIf="!(licenseTagInfos[i] == undefined)"
+              class="row-item-center"
+              style="position: relative"
+            >
+              <span class="license-name">{{ licenseTagInfos[i].name }}</span>
+              <span class="tooltiptext">
+                {{ licenseTagInfos[i].name }}
+              </span>
+              <span
+                class="i-remind-remove"
+                (click)="licenseTagInfos[i] = undefined"
+              >
+                <span class="subtract">-</span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="Main">License Main Tags</div>
+          </div>
+        </div>
+        <div class="row">
+          <div
+            class="col-2"
+            *ngFor="let licenseTagInfo of licenseTagInfos; let i = index"
+          >
+            <div
+              class="tooltip"
+              *ngFor="let licenseMainTag of licenseTagInfo?.licenseMainTags"
+            >
+              <div class="tag">{{ licenseMainTag.mainTag.name }}</div>
+              <span class="tooltiptext">
+                {{ licenseMainTag.mainTag.description }}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <div class="Can">Can(Rights)</div>
+          </div>
+        </div>
+        <div class="row">
+          <div
+            class="col-2"
+            *ngFor="let licenseTagInfo of licenseTagInfos; let i = index"
+          >
+            <div
+              class="tooltip"
+              *ngFor="let canFeatureTag of licenseTagInfo?.canFeatureTags"
+            >
+              <div class="tag">{{ canFeatureTag.name }}</div>
+              <span class="tooltiptext">
+                {{ canFeatureTag.description }}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <div class="Must">Must(Obligations)</div>
+          </div>
+        </div>
+        <div class="row">
+          <div
+            class="col-2"
+            *ngFor="let licenseTagInfo of licenseTagInfos; let i = index"
+          >
+            <div
+              class="tooltip"
+              *ngFor="let mustFeatureTag of licenseTagInfo?.mustFeatureTags"
+            >
+              <div class="tag">{{ mustFeatureTag.name }}</div>
+              <span class="tooltiptext">
+                {{ mustFeatureTag.description }}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <div class="Cannot">Cannot(Limitations)</div>
+          </div>
+        </div>
+        <div class="row">
+          <div
+            class="col-2"
+            *ngFor="let licenseTagInfo of licenseTagInfos; let i = index"
+          >
+            <div
+              class="tooltip"
+              *ngFor="let cannotFeatureTag of licenseTagInfo?.cannotFeatureTags"
+            >
+              <div class="tag">{{ cannotFeatureTag.name }}</div>
+              <span class="tooltiptext">
+                {{ cannotFeatureTag.description }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

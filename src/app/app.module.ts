@@ -51,6 +51,7 @@ import { CompatiableTableComponent } from './compatiable-table/compatiable-table
 import { LicenseItemFlatComponent } from './license-all/license-list-no-feature/license-item-flat/license-item-flat.component';
 import { BreadComponent } from './navbar/bread/bread.component';
 import { MatRadioModule } from '@angular/material/radio';
+import { LicenseCompareComponent } from './license-compare/license-compare.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +79,7 @@ import { MatRadioModule } from '@angular/material/radio';
     CompatiableTableComponent,
     LicenseItemFlatComponent,
     BreadComponent,
+    LicenseCompareComponent,
   ],
   imports: [
     ReactiveFormsModule,

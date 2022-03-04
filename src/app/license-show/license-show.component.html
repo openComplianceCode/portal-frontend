@@ -3,6 +3,7 @@
     <div class="container">
       <div class="title">
         {{ license.name }}
+        <mat-icon class="menu-icon" title="与其它License对比" [routerLink]="['/license-compare', id]">menu</mat-icon> 
       </div>
       <div class="sub-title">
         <div class="spdx-name">
