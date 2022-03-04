@@ -11,6 +11,7 @@ import { UserComponent } from './user/user.component';
 import { LvMengComponent } from './lv-meng/lv-meng.component';
 import { LicenseAllComponent } from './license-all/license-all.component';
 import { CompatiableTableComponent } from './compatiable-table/compatiable-table.component';
+import { LicenseCompareComponent } from './license-compare/license-compare.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'lvmeng', component: LvMengComponent },
   { path: 'licenseall', component: LicenseAllComponent },
   { path: 'compatiableTable', component: CompatiableTableComponent },
+  { path: 'license-compare/:id', component: LicenseCompareComponent }
 ];
 
 @NgModule({
