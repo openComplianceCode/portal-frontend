@@ -22,10 +22,10 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'auth-redirect', component: AuthFunctionComponent },
   { path: 'report/:id', component: ReportComponent },
-  { path: 'lvmeng', component: LvMengComponent },
+  { path: 'lvmeng-show', component: LvMengComponent },
   { path: 'licenseall', component: LicenseAllComponent },
   { path: 'compatiableTable', component: CompatiableTableComponent },
-  { path: 'license-compare/:id', component: LicenseCompareComponent }
+  { path: 'license-compare/:id', component: LicenseCompareComponent },
 ];
 
 @NgModule({
