@@ -45,6 +45,7 @@ export class CompatiableTableComponent implements OnInit {
   license_end_result: string;
   result: string;
   remarks: string;
+  result_explain: string;
 
   hasResult: boolean;
   http: HttpClient;
@@ -80,7 +81,6 @@ export class CompatiableTableComponent implements OnInit {
     this.copyleftList = [
       'Artistic-2.0',
       'LPL-1.02',
-      'CC-BY-SA-4.0',
       'CDDL-1.0',
       'CECILL-2.1',
       'CPAL-1.0',
@@ -91,7 +91,6 @@ export class CompatiableTableComponent implements OnInit {
       'EPL-2.0',
       'EUPL-1.1',
       'EUPL-1.2',
-      'LPPL-1.3c',
       'MPL-2.0',
       'MS-RL',
       'OSL-3.0',
@@ -101,12 +100,11 @@ export class CompatiableTableComponent implements OnInit {
       'SPL-1.0',
       'Vim',
       'LGPL-2.1-only',
-      'LGPL-2.1+',
+      'LGPL-2.1-or-later',
       'LGPL-3.0-only',
       'GPL-2.0-only',
       'GPL-2.0-or-later',
       'GPL-3.0-only',
-      'GPL-3.0-or-later',
       'AGPL-3.0-only',
     ];
     this.permissiveList = [
@@ -178,6 +176,7 @@ export class CompatiableTableComponent implements OnInit {
         this.isConflict = (<string>data.result).startsWith('冲突');
         this.isWarning = (<string>data.result).startsWith('相容，但不兼容');
         this.isCompatible = (<string>data.result).startsWith('兼容');
+        this.result_explain = data.result_explain;
       });
   }
 
