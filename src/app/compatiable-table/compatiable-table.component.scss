@@ -225,3 +225,52 @@ td {
 .mat-radio-group {
   margin: 15px;
 }
+.overflow-text-ellipsis {
+  /* 防止设置宽无效 */
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 8px;
+  /* 不换行 */
+  white-space: nowrap;
+  /* 溢出隐藏 */
+  overflow: hidden;
+  /* 显示为省略号 */
+  text-overflow: ellipsis;
+}
+.tooltip {
+  position: relative;
+  overflow: visible;
+}
+.tooltip .tooltip-text {
+  display: none;
+  height: 0;
+  position: absolute;
+  width: 120px;
+  background-color: black;
+  color: white;
+  border-radius: 6px;
+  text-align: center;
+  top: 100%;
+  left: 50%; /*定位到中间偏右一点*/
+  margin-left: -60px; /*width的一半，左移到正中间*/
+  padding: 5px;
+  /* 单词断开 */
+  /* word-break: break-all; */
+  /* 不写这个可能和表格内容重影 */
+  z-index: 1;
+}
+.tooltip:hover .tooltip-text {
+  display: block;
+  height: auto;
+}
+.tooltip .tooltip-text::after {
+  content: ""; /*见https://developer.mozilla.org/zh-CN/docs/Web/CSS/content，如果不写，默认为normal，对伪元素normal计算为none，不会显示伪元素*/
+  position: absolute;
+  bottom: 100%; /*定位到上方*/
+  left: 50%; /*定位到中间偏右一点*/
+  margin-left: -5px; /*左移到水平正中*/
+  border-width: 5px; /*边框宽度为5px,底边为10px长*/
+  border-style: solid;
+  border-color: transparent transparent black transparent; /*用border画三角形，分别是上右下左，因为要画向上的箭头所以第三个位置不是透明*/
+}

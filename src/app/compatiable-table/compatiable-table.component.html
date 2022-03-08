@@ -160,10 +160,10 @@
     <table style="border-collapse: collapse">
       <thead>
         <tr>
-          <th width="25%">你的项目要组合的许可证</th>
-          <th width="25%">你的项目使用的许可证</th>
-          <th width="25%">兼容性关系</th>
-          <th width="25%">备注</th>
+          <th style="width: 28%">你的项目要组合的许可证</th>
+          <th style="width: 28%">你的项目使用的许可证</th>
+          <th style="width: 22%">兼容性关系</th>
+          <th style="width: 22%">备注</th>
         </tr>
       </thead>
       <tbody>
@@ -176,7 +176,12 @@
         >
           <td>{{ license_start_result }}</td>
           <td>{{ license_end_result }}</td>
-          <td>{{ result }}</td>
+          <td>
+            <div class="tooltip">
+              <span class="tooltip-text">{{ result_explain }}</span>
+              <span class="overflow-text-ellipsis">{{ result }}</span>
+            </div>
+          </td>
           <td>{{ remarks }}</td>
         </tr>
       </tbody>
