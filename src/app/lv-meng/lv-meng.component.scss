@@ -14,11 +14,16 @@
   width: 100%;
   height: 100%;
 }
+.inline-item-center {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
 .page {
   padding: 0 30px;
 }
 .card-scope {
-  flex: 0 0 33.333%;
+  flex: 1 1 50%;
   padding: 20px;
 }
 .card {
@@ -45,7 +50,7 @@
 }
 .license_text {
   width: 100%;
-  height: 600px;
+  height: 300px;
 }
 .license_text:focus {
   outline: none;
@@ -114,7 +119,6 @@ table thead th {
   padding: 12px;
   text-align: left;
   vertical-align: middle;
-  white-space: nowrap;
 }
 table tbody td {
   color: #554;
@@ -136,4 +140,47 @@ th {
 td {
   text-align: center;
   padding: 8px;
+}
+.alert {
+  padding: 15px;
+  border-radius: 5px;
+  background-color: #e8f3fe;
+}
+.copy-icon {
+  color: gray;
+  cursor: pointer;
+  padding-left: 5px;
+  transition: all 0.3s;
+  user-select: none;
+}
+.copy-icon:active {
+  color: black;
+}
+.tooltip {
+  display: inline;
+  margin: 0 auto;
+  position: relative;
+}
+.tooltip .tooltip-text {
+  position: absolute;
+  background-color: black;
+  color: white;
+  border-radius: 6px;
+  text-align: center;
+  top: 150%;
+  left: 50%; /*定位到中间偏右一点*/
+  transform: translate(-50%, 0); /*width的一半，左移到正中间*/
+  padding: 5px;
+  user-select: none;
+  white-space: nowrap;
+}
+.tooltip .tooltip-text::after {
+  content: ""; /*见https://developer.mozilla.org/zh-CN/docs/Web/CSS/content，如果不写，默认为normal，对伪元素normal计算为none，不会显示伪元素*/
+  position: absolute;
+  bottom: 100%; /*定位到上方*/
+  left: 50%; /*定位到中间偏右一点*/
+  margin-left: -5px; /*左移到水平正中*/
+  border-width: 5px; /*边框宽度为5px,底边为10px长*/
+  border-style: solid;
+  border-color: transparent transparent black transparent; /*用border画三角形，分别是上右下左，因为要画向上的箭头所以第三个位置不是透明*/
 }

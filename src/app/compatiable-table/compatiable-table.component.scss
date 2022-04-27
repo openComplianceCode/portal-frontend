@@ -31,10 +31,6 @@
   border-radius: 2px;
   color: #575962;
 }
-/* 点击其它地方收起下拉列表，不知道为什么没起效 */
-.select-license:not(:focus) .dropdown-menu {
-  display: none;
-}
 .button {
   padding: 5px 10px;
   color: white;

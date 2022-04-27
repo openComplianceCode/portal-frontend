@@ -81,7 +81,6 @@ export class LicenseCompareComponent implements OnInit {
         this.showToast = false;
       }
     });
-    console.log(this.licenseTagInfos[0]==undefined)
   }
   //id为license的id, index为是页面上选择的第几个license
   getLicenseTagInfo(id: number, index: number) {
@@ -90,7 +89,6 @@ export class LicenseCompareComponent implements OnInit {
       variables: {id: id}
     }).subscribe((res) => {
       this.licenseTagInfos[this.activeIndex] = res.data.license;
-      console.log(this.licenseTagInfos);
     });
   }
 
@@ -103,7 +101,6 @@ export class LicenseCompareComponent implements OnInit {
       this.loading = loading;
       this.error = error;
       this.data = data;
-      console.log("data: "+ JSON.stringify(data));
       return data?.listLicensesByName;
     }));
     this.licenses$.subscribe();

@@ -30,6 +30,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
     "@swimlane/ngx-charts": "^18.0.1",
     "apollo-angular": "^2.4.0",
+    "clipboard": "^2.0.10",
     "graphql": "^15.0.0",
     "lodash": "^4.17.21",
     "ngx-cookie-service": "^11.0.2",
