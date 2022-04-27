@@ -14,6 +14,7 @@
                 name="text"
                 spellcheck="false"
                 maxlength="10000"
+                rows="10"
                 [(ngModel)]="text"
                 (ngModelChange)="updateWordsLength()"
               ></textarea>
@@ -23,7 +24,7 @@
               {{ wordsLength }}
             </span>
           </div>
-          <div class="row-item-center" style="margin-top: 10px">
+          <div class="row-item-center" style="margin-top: 0px">
             <button
               mat-raised-button
               color="primary"
@@ -31,7 +32,7 @@
               [disabled]="loading"
               class="li-button"
             >
-              {{ loading ? "Loading.. ( > 50 seconds ) " : "提交" }}
+              {{ loading ? "Loading.." : "提交" }}
             </button>
           </div>
         </mat-card>
@@ -39,21 +40,62 @@
     </div>
   </div>
 </div>
+
 <div class="page" *ngIf="hasResult">
   <div class="row" style="align-items: center">
-    <h4 class="page-title">识别结果如下:</h4>
-
-    <button
-      mat-raised-button
-      [matTooltip]="result.summary"
-      matTooltipClass="tooltip-warning"
-      aria-label="Button that shows a red tooltip"
-      mat-mini-fab
-      color="warn"
-      *ngIf="result.summary"
-    >
-      <mat-icon>filter_list</mat-icon>
-    </button>
+    <ng-container *ngIf="this.hasFullTextMatch">
+      <h4 class="page-title">文本完全匹配为:</h4>
+      <span class="alert inline-item-center">
+        <span class="tooltip" id="fullTextMatchLicenseCopy">
+          <span>{{ this.fullTextMatchLicense }}</span>
+          <!-- 复制成功提示 -->
+          <div
+            [@toast-animation]="showToast ? 'show' : 'hide'"
+            (@toast-animation.start)="displayBlockToast(toast)"
+            (@toast-animation.done)="displayNoneToast(toast)"
+            (click)="$event.stopPropagation()"
+            class="tooltip-text"
+            #toast
+          >
+            <div>复制成功</div>
+          </div>
+        </span>
+        <mat-icon
+          data-clipboard-action="copy"
+          data-clipboard-target="#fullTextMatchLicenseCopy"
+          class="copy-icon"
+          >content_copy</mat-icon>
+      </span>
+    </ng-container>
+    <ng-container *ngIf="!this.hasFullTextMatch && this.isResultConsistent">
+      <h4 class="page-title">不同算法的最高匹配结果都为:</h4>
+      <span class="alert inline-item-center">
+        <span class="tooltip" id="consistentLicenseCopy">
+          <span>{{ this.consistentLicense }}</span>
+          <!-- 复制成功提示 -->
+          <div
+            [@toast-animation]="showToast ? 'show' : 'hide'"
+            (@toast-animation.start)="displayBlockToast(toast)"
+            (@toast-animation.done)="displayNoneToast(toast)"
+            (click)="$event.stopPropagation()"
+            class="tooltip-text"
+            #toast
+          >
+            <div>复制成功</div>
+          </div>
+        </span>
+        <mat-icon
+          data-clipboard-action="copy"
+          data-clipboard-target="#consistentLicenseCopy"
+          class="copy-icon"
+          >content_copy</mat-icon>
+      </span>
+    </ng-container>
+    <ng-container *ngIf="!this.hasFullTextMatch && !this.isResultConsistent">
+      <h4 class="page-title">
+        未出现文本完全匹配且不同算法最高匹配结果不同，请注意鉴别
+      </h4>
+    </ng-container>
   </div>
 
   <div class="row" style="justify-content: flex-start">
@@ -67,18 +109,25 @@
             <table>
               <thead>
                 <tr>
-                  <th>spdx_identifier</th>
+                  <th>spdx identifier</th>
                   <th>全称</th>
                   <th>相似度</th>
-                  <th>相似类型</th>
+                  <!-- <th>相似类型</th> -->
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let license of scanResult.licenses">
-                  <td>{{ license.spdx_license_identifier }}</td>
+                  <td>
+                    <a
+                      [href]="'/license/' + license.id"
+                      target="_blank"
+                      style="text-decoration: none"
+                      >{{ license.spdx_license_identifier }}</a
+                    >
+                  </td>
                   <td>{{ license.name }}</td>
                   <td>{{ license.sim_score }}</td>
-                  <td>{{ license.sim_type }}</td>
+                  <!-- <td>{{ license.sim_type }}</td> -->
                 </tr>
               </tbody>
             </table>
