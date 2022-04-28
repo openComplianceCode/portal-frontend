@@ -32,7 +32,7 @@
               [disabled]="loading"
               class="li-button"
             >
-              {{ loading ? "Loading.." : "提交" }}
+              {{ loading ? "Loading.. ( > 40 seconds ) " : "提交" }}
             </button>
           </div>
         </mat-card>
@@ -44,10 +44,15 @@
 <div class="page" *ngIf="hasResult">
   <div class="row" style="align-items: center">
     <ng-container *ngIf="this.hasFullTextMatch">
-      <h4 class="page-title">文本完全匹配为:</h4>
-      <span class="alert inline-item-center">
+      <div class="alert-success row-item-center flex-start">
+        <mat-icon style="color: green">check_circle</mat-icon>
+        <span class="page-title">文本完全匹配为:&nbsp;&nbsp;&nbsp;</span>
         <span class="tooltip" id="fullTextMatchLicenseCopy">
-          <span>{{ this.fullTextMatchLicense }}</span>
+          <span class="header">
+            <a [href]="'/license/' + fullTextMatchLicenseId" target="_blank">{{
+              this.fullTextMatchLicense
+            }}</a>
+          </span>
           <!-- 复制成功提示 -->
           <div
             [@toast-animation]="showToast ? 'show' : 'hide'"
@@ -64,14 +69,22 @@
           data-clipboard-action="copy"
           data-clipboard-target="#fullTextMatchLicenseCopy"
           class="copy-icon"
-          >content_copy</mat-icon>
-      </span>
+          >content_copy</mat-icon
+        >
+      </div>
     </ng-container>
     <ng-container *ngIf="!this.hasFullTextMatch && this.isResultConsistent">
-      <h4 class="page-title">不同算法的最高匹配结果都为:</h4>
-      <span class="alert inline-item-center">
+      <div class="alert-success row-item-center flex-start">
+        <mat-icon style="color: green">check_circle</mat-icon>
+        <span class="page-title"
+          >不同算法的最高匹配结果都为:&nbsp;&nbsp;&nbsp;</span
+        >
         <span class="tooltip" id="consistentLicenseCopy">
-          <span>{{ this.consistentLicense }}</span>
+          <span class="header">
+            <a [href]="'/license/' + consistentLicenseId" target="_blank">{{
+              this.consistentLicense
+            }}</a>
+          </span>
           <!-- 复制成功提示 -->
           <div
             [@toast-animation]="showToast ? 'show' : 'hide'"
@@ -88,13 +101,17 @@
           data-clipboard-action="copy"
           data-clipboard-target="#consistentLicenseCopy"
           class="copy-icon"
-          >content_copy</mat-icon>
-      </span>
+          >content_copy</mat-icon
+        >
+      </div>
     </ng-container>
     <ng-container *ngIf="!this.hasFullTextMatch && !this.isResultConsistent">
-      <h4 class="page-title">
-        未出现文本完全匹配且不同算法最高匹配结果不同，请注意鉴别
-      </h4>
+      <div class="alert-warning row-item-center">
+        <mat-icon>report_problem</mat-icon>
+        <span class="page-title">
+          未出现文本完全匹配且不同算法最高匹配结果不同，请注意鉴别
+        </span>
+      </div>
     </ng-container>
   </div>
 
@@ -109,21 +126,33 @@
             <table>
               <thead>
                 <tr>
-                  <th>spdx identifier</th>
+                  <th>SPDX Identifier</th>
                   <th>全称</th>
                   <th>相似度</th>
                   <!-- <th>相似类型</th> -->
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let license of scanResult.licenses">
+                <tr
+                  *ngFor="let license of scanResult.licenses; let i = index"
+                  [ngClass]="{
+                    success:
+                      (hasFullTextMatch &&
+                        license.id == fullTextMatchLicenseId) ||
+                      (isResultConsistent && license.id == consistentLicenseId),
+                    warning: !hasFullTextMatch && !isResultConsistent && i == 0
+                  }"
+                >
                   <td>
-                    <a
-                      [href]="'/license/' + license.id"
-                      target="_blank"
-                      style="text-decoration: none"
-                      >{{ license.spdx_license_identifier }}</a
-                    >
+                    <span class="header hover-tooltip">
+                      <a [href]="'/license/' + license.id" target="_blank">{{
+                        license.spdx_license_identifier
+                      }}</a>
+                      <span *ngIf="license.sim_type == 'ExactFullText'" class="right-star">
+                        <mat-icon>star_rate</mat-icon>
+                      </span>  
+                      <span *ngIf="license.sim_type == 'ExactFullText'" class="hover-tooltip-text">文本完全匹配</span>
+                    </span>
                   </td>
                   <td>{{ license.name }}</td>
                   <td>{{ license.sim_score }}</td>

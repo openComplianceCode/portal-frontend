@@ -37,8 +37,10 @@ export class LvMengComponent implements OnInit {
   breads: any = [{ url: '/', label: 'Home' }, { label: '吕蒙' }];
   isResultConsistent = false;
   consistentLicense = "";
+  consistentLicenseId = "";
   hasFullTextMatch = false;
   fullTextMatchLicense = "";
+  fullTextMatchLicenseId = "";
   showToast: boolean = false;
   @ViewChild("toast") toast: ElementRef;
   clipboard: Clipboard;
@@ -92,11 +94,13 @@ export class LvMengComponent implements OnInit {
     for (let i = 0; i < scanResultList.length; i++) {
       for (let j = 0; j < scanResultList[i].licenses.length; j++) {
         if (data.summary == "不同算法扫描都指向同一最有可能的license") {
-          this.consistentLicense = scanResultList[i].licenses[0].spdx_license_identifier; 
+          this.consistentLicense = scanResultList[i].licenses[0].spdx_license_identifier;
+          this.consistentLicenseId = scanResultList[i].licenses[0].id;
         }
         if (scanResultList[i].licenses[j].sim_type == "ExactFullText") {
           this.hasFullTextMatch = true;
           this.fullTextMatchLicense = scanResultList[i].licenses[j].spdx_license_identifier;
+          this.fullTextMatchLicenseId = scanResultList[i].licenses[j].id;
           scanResultList[i].licenses = scanResultList[i].licenses.slice(j, j + 1);
         }
       }
