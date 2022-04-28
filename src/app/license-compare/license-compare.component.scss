@@ -228,7 +228,7 @@ td {
   height: auto;
 }
 .tooltip .tooltiptext::after {
-  content: ""; /*见https://developer.mozilla.org/zh-CN/docs/Web/CSS/content，如果不写，默认为normal，对伪元素normal计算为none，不会显示伪元素*/
+  content: "";
   position: absolute;
   bottom: 100%; /*定位到上方*/
   left: 50%; /*定位到中间偏右一点*/
