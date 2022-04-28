@@ -97,7 +97,7 @@ export class LvMengComponent implements OnInit {
         if (scanResultList[i].licenses[j].sim_type == "ExactFullText") {
           this.hasFullTextMatch = true;
           this.fullTextMatchLicense = scanResultList[i].licenses[j].spdx_license_identifier;
-          scanResultList[i].licenses = scanResultList[i].licenses.slice(0, j + 1);
+          scanResultList[i].licenses = scanResultList[i].licenses.slice(j, j + 1);
         }
       }
     }
