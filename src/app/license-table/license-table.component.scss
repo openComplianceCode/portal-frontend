@@ -1,0 +1,75 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.card {
+  background-color: #fff;
+  width: 100%;
+  border-radius: 5px 5px 5px 0;
+  box-shadow: 1px 1px 15px 0 rgba(69, 65, 78, 0.08);
+  padding: 10px;
+  margin: 30px auto;
+}
+.common-table {
+  margin: 0;
+  width: 100%;
+  /* 若是auto,表格会超出card */
+  table-layout: fixed;
+  /* 表格边框共用 */
+  border-collapse: collapse;
+}
+.common-table th {
+  text-align: center;
+  font-weight: 600;
+}
+.common-table tr {
+  padding: 8px;
+  text-align: center;
+}
+.common-table td {
+  border: 1px solid #dedede;
+}
+.overflow-text-ellipsis {
+  display: inline-block;
+  padding: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tooltip {
+  position: relative;
+  overflow: visible;
+}
+.tooltip .tooltip-text {
+  display: none;
+  height: 0;
+  position: absolute;
+  background-color: black;
+  color: white;
+  border-radius: 6px;
+  text-align: center;
+  top: 100%;
+  left: 50%;
+  padding: 5px;
+  z-index: 1;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+.tooltip:hover .tooltip-text {
+  display: block;
+  height: auto;
+}
+.tooltip .tooltip-text::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+.gray {
+  background-color: #f8f9fa;
+}

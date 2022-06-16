@@ -52,6 +52,7 @@ import { LicenseItemFlatComponent } from './license-all/license-list-no-feature/
 import { BreadComponent } from './navbar/bread/bread.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { LicenseCompareComponent } from './license-compare/license-compare.component';
+import { LicenseTableComponent } from './license-table/license-table.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import { LicenseCompareComponent } from './license-compare/license-compare.compo
     LicenseItemFlatComponent,
     BreadComponent,
     LicenseCompareComponent,
+    LicenseTableComponent,
   ],
   imports: [
     ReactiveFormsModule,

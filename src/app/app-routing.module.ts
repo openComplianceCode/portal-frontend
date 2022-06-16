@@ -12,6 +12,7 @@ import { LvMengComponent } from './lv-meng/lv-meng.component';
 import { LicenseAllComponent } from './license-all/license-all.component';
 import { CompatiableTableComponent } from './compatiable-table/compatiable-table.component';
 import { LicenseCompareComponent } from './license-compare/license-compare.component';
+import { LicenseTableComponent } from './license-table/license-table.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'licenseall', component: LicenseAllComponent },
   { path: 'compatiableTable', component: CompatiableTableComponent },
   { path: 'license-compare/:id', component: LicenseCompareComponent },
+  { path: 'license-list', component: LicenseTableComponent }
 ];
 
 @NgModule({
