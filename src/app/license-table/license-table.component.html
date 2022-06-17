@@ -15,37 +15,37 @@
                 <tr *ngFor="let license of licenseList;let i=index" [ngClass]="{gray: i%2==0}">
                     <td style="text-align: left;">
                         <div class="tooltip" style="display: inline-flex;max-width: 100%;">
-                            <span class="tooltip-text">{{license.name}}</span>
+                            <span class="tooltip-text" *ngIf="license.name!=''">{{license.name}}</span>
                             <span class="overflow-text-ellipsis" [routerLink]="'/license/'+license.id" style="color: #45baf1;cursor: pointer;">{{license.name}}</span>
                         </div>
                     </td>
                     <td style="text-align: left;">
                         <div class="tooltip" style="display: inline-flex;max-width: 100%;">
-                            <span class="tooltip-text" style="text-align: left;">{{license.spdxName}}</span>
+                            <span class="tooltip-text" *ngIf="license.spdxName!=''">{{license.spdxName}}</span>
                             <span class="overflow-text-ellipsis">{{license.spdxName}}</span>
                         </div>
                     </td>
                     <td>
                         <div class="tooltip" style="display: inline-flex;max-width: 100%;">
-                            <span class="tooltip-text">{{license.fsfApproved == '1'?'Y':''}}</span>
+                            <span class="tooltip-text" *ngIf="license.fsfApproved!=''">{{license.fsfApproved == '1'?'Y':''}}</span>
                             <span class="overflow-text-ellipsis">{{license.fsfApproved == '1'?'Y':''}}</span>
                         </div> 
                     </td>
                     <td>
                         <div class="tooltip" style="display: inline-flex;max-width: 100%;">
-                            <span class="tooltip-text">{{license.osiApproved == '1'?'Y':''}}</span>
+                            <span class="tooltip-text" *ngIf="license.osiApproved!=''">{{license.osiApproved == '1'?'Y':''}}</span>
                             <span class="overflow-text-ellipsis">{{license.osiApproved == '1'?'Y':''}}</span> 
                         </div>
                     </td>
                     <td>
                         <div class="tooltip" style="display: inline-flex;max-width: 100%;">
-                            <span class="tooltip-text">{{license.oeApproved == '1'?'Y':''}}</span>
+                            <span class="tooltip-text" *ngIf="license.oeApproved!=''">{{license.oeApproved == '1'?'Y':''}}</span>
                             <span class="overflow-text-ellipsis">{{license.oeApproved == '1'?'Y':''}}</span> 
                         </div>
                     </td>
                     <td>
                         <div class="tooltip">
-                            <span class="tooltip-text">{{license.lowRisk == '1'?'Y':''}}</span>
+                            <span class="tooltip-text" *ngIf="license.lowRisk!=''">{{license.lowRisk == '1'?'Y':''}}</span>
                             <span class="overflow-text-ellipsis">{{license.lowRisk == '1'?'Y':''}}</span> 
                         </div>
                     </td>
