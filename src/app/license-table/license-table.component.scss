@@ -19,9 +19,13 @@
   /* 表格边框共用 */
   border-collapse: collapse;
 }
-.common-table th {
+.common-table tr th {
   text-align: center;
   font-weight: 600;
+  font-size: 14px;
+  text-align: left;
+  padding: 0px 8px
+
 }
 .common-table tr {
   padding: 8px;
@@ -72,4 +76,17 @@
 }
 .gray {
   background-color: #f8f9fa;
+}
+
+
+.info-icon {
+  font-size: 18px;
+  fill: white;
+  font-weight: normal;
+  vertical-align: top;
+  padding: 0px;
+  height:18px;
+  width: 18px;
+  line-height: 18px;
+  
 }
