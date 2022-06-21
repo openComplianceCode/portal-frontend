@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
 
 const LIST_LICENSE_TABLE = gql`
@@ -21,10 +21,12 @@ const LIST_LICENSE_TABLE = gql`
 })
 export class LicenseTableComponent implements OnInit {
   licenseList: License[];
+  loading: boolean = true;
+
   constructor(private apollo: Apollo) {}
 
   ngOnInit(): void {
-    this.getLicenseTable();
+    setTimeout(() => this.getLicenseTable(), 100);
   }
 
   getLicenseTable() {
@@ -33,8 +35,13 @@ export class LicenseTableComponent implements OnInit {
         query: LIST_LICENSE_TABLE,
       })
       .subscribe(({data}) => {
+        this.loading = false;
         this.licenseList = (<any>data).listApprovedLicenses;
       });
+  }
+
+  isEllipsisActive(e: any) {
+    return (e.offsetWidth < e.scrollWidth);
   }
 }
 

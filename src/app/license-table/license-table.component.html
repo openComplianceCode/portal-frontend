@@ -2,55 +2,62 @@
     <div class="card">  
         <table class="common-table">
             <thead>
-                <tr>
+                <tr class="main">
                     <th style="width: 40%;text-align: left;">Full name</th>
-                    <th style="width: 20%;text-align: left;">Identifier</th>
-                    <th>FSF Free?</th>
-                    <th>OSI Approved?</th>
-                    <th>oE Approved?</th>
-                    <th>limit usage?</th>
+                    <th style="width: 17%;text-align: left;">Identifier</th>
+                    <th>FSF Free? <mat-icon [matTooltip]="'自由软件基金会认证的自由软件，粗略的说，它意味着保障用户有使用，拷贝，分发，学习，修改，改进软件的自由，但享受这些自由的同时，并不排斥你需要履行一些义务(最常见的是copyleft)。'"matTooltipClass="tooltip-warning" display="inline" class="info-icon">info_outline</mat-icon></th>
+                    <th>OSI Approved?<mat-icon [matTooltip]="'由Open Source Initiative组织认证符合“开源”定义的许可证，需满足10条开源定义。'"matTooltipClass="tooltip-warning" display="inline" class="info-icon">info_outline</mat-icon></th>
+                    <th>oE Approved?<mat-icon [matTooltip]="'openEuler合规SIG组认可的可引入的许可证，这些许可证的组件可自由的使用，分发，修改, 基本满足开源定义。'"matTooltipClass="tooltip-warning" display="inline" class="info-icon">info_outline</mat-icon></th>
+                    <th>Restricted Use?<mat-icon [matTooltip]="'这类许可证并不是传统意义上的开源许可证, 它们或许有额外的限制，或许并没有清晰的授权, 需要谨慎受限的使用。'"matTooltipClass="tooltip-warning" display="inline" class="info-icon">info_outline</mat-icon></th>
                 </tr>
+                <tr>
+                    <th>全称</th>
+                    <th>标准标示符</th>
+                    <th>FSF 认可自由?</th>
+                    <th>OSI 认可开源?</th>
+                    <th>oE 认可?</th>
+                    <th>oE 受限使用?</th>
+                </tr>
+                
             </thead>
+            
             <tbody>
                 <tr *ngFor="let license of licenseList;let i=index" [ngClass]="{gray: i%2==0}">
                     <td style="text-align: left;">
                         <div class="tooltip" style="display: inline-flex;max-width: 100%;">
-                            <span class="tooltip-text" *ngIf="license.name!=''">{{license.name}}</span>
-                            <span class="overflow-text-ellipsis" [routerLink]="'/license/'+license.id" style="color: #45baf1;cursor: pointer;">{{license.name}}</span>
+                            <span class="overflow-text-ellipsis" [routerLink]="'/license/'+license.id" style="color: #45baf1;cursor: pointer;" #fullName>{{license.name}}</span>
+                            <span class="tooltip-text" *ngIf="license.name && isEllipsisActive(fullName)">{{license.name}}</span>
                         </div>
                     </td>
                     <td style="text-align: left;">
                         <div class="tooltip" style="display: inline-flex;max-width: 100%;">
-                            <span class="tooltip-text" *ngIf="license.spdxName!=''">{{license.spdxName}}</span>
-                            <span class="overflow-text-ellipsis">{{license.spdxName}}</span>
+                            <span class="overflow-text-ellipsis" #spdxIdentify>{{license.spdxName}}</span>
+                            <span class="tooltip-text" *ngIf="license.spdxName && isEllipsisActive(spdxIdentify)">{{license.spdxName}}</span>
                         </div>
                     </td>
                     <td>
                         <div class="tooltip" style="display: inline-flex;max-width: 100%;">
-                            <span class="tooltip-text" *ngIf="license.fsfApproved!=''">{{license.fsfApproved == '1'?'Y':''}}</span>
                             <span class="overflow-text-ellipsis">{{license.fsfApproved == '1'?'Y':''}}</span>
                         </div> 
                     </td>
                     <td>
                         <div class="tooltip" style="display: inline-flex;max-width: 100%;">
-                            <span class="tooltip-text" *ngIf="license.osiApproved!=''">{{license.osiApproved == '1'?'Y':''}}</span>
                             <span class="overflow-text-ellipsis">{{license.osiApproved == '1'?'Y':''}}</span> 
                         </div>
                     </td>
                     <td>
                         <div class="tooltip" style="display: inline-flex;max-width: 100%;">
-                            <span class="tooltip-text" *ngIf="license.oeApproved!=''">{{license.oeApproved == '1'?'Y':''}}</span>
                             <span class="overflow-text-ellipsis">{{license.oeApproved == '1'?'Y':''}}</span> 
                         </div>
                     </td>
                     <td>
                         <div class="tooltip">
-                            <span class="tooltip-text" *ngIf="license.lowRisk!=''">{{license.lowRisk == '1'?'Y':''}}</span>
                             <span class="overflow-text-ellipsis">{{license.lowRisk == '1'?'Y':''}}</span> 
                         </div>
                     </td>
                 </tr>
             </tbody>
         </table>
+        <mat-spinner diameter="80" style="margin: 20px auto"></mat-spinner>
     </div>
 </div>
