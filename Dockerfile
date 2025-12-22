@@ -23,7 +23,7 @@ RUN mkdir -p /var/cache/nginx/client_temp \
     /var/cache/nginx/scgi_temp \
     /var/run
 RUN touch /var/run/nginx.pid\
-    chown -R newuser:newuser /var/cache/nginx /var/run /etc/nginx /var/log/nginx /var/run/nginx.pid \
+    && chown -R newuser:newuser /var/cache/nginx /var/run /etc/nginx /var/log/nginx /var/run/nginx.pid \
     && chmod -R 755 /var/cache/nginx /etc/nginx /var/log/nginx /var/run \
     && chmod 644 /var/run/nginx.pid
     
