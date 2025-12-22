@@ -10,7 +10,7 @@ COPY ./nginx-backend.conf /etc/nginx/templates/default.conf.template
 # 创建 myuser 用户
 RUN apk update\
     && apk add shadow\
-    && add --no-cache libcap shadow
+    && apk add --no-cache libcap shadow
 RUN groupadd --gid 5000 newuser \
     && useradd --home-dir /home/newuser --create-home --uid 5000 \
         --gid 5000 --shell /bin/sh --skel /dev/null newuser
