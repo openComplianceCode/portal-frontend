@@ -23,7 +23,7 @@ RUN mkdir -p /var/cache/nginx/client_temp \
     /var/cache/nginx/scgi_temp \
     /var/run
 RUN chown -R newuser:newuser /var/cache/nginx /var/run /etc/nginx /var/log/nginx \
-    && chmod -R 755 /var/cache/nginx /etc/nginx /var/log/nginx
+    && chmod -R 755 /var/cache/nginx /etc/nginx /var/log/nginx /var/run
     
 # 切换到 myuser 用户
 USER newuser
