@@ -1,7 +1,7 @@
 FROM node:14.16-alpine3.13 as builder
 WORKDIR /app
 COPY ./package.json ./package-lock.json ./
-RUN npm --registry https://registry.npm.taobao.org install
+RUN npm --registry https://registry.npmmirror.com/ install
 COPY . .
 RUN npm run-script ng build -- --prod
 FROM nginx:1.21.0-alpine as runner
