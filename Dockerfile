@@ -10,7 +10,14 @@ COPY ./nginx-backend.conf /etc/nginx/templates/default.conf.template
 # 创建 myuser 用户
 RUN apk update\
     && apk add shadow
-RUN groupadd --gid 5000 newuser && chown -R nginx:nginx /var/cache/nginx && chmod -R 755 /var/cache/nginx \
+RUN mkdir -p /var/cache/nginx/client_temp \
+    /var/cache/nginx/fastcgi_temp \
+    /var/cache/nginx/proxy_temp \
+    /var/cache/nginx/uwsgi_temp \
+    /var/cache/nginx/scgi_temp
+RUN groupadd --gid 5000 newuser \
+    && chown -R newuser:newuser /var/cache/nginx \
+    && chmod 777 /var/cache/nginx \
     && useradd --home-dir /home/newuser --create-home --uid 5000 \
         --gid 5000 --shell /bin/sh --skel /dev/null newuser
 # 切换到 myuser 用户
